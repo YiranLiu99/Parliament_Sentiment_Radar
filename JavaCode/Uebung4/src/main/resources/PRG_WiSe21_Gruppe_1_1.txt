@@ -1,0 +1,6 @@
+remote_host = prg2021.texttechnologylab.org
+remote_database = PRG_WiSe21_Gruppe_1_1
+remote_user = PRG_WiSe21_Gruppe_1_1
+remote_password = ORFMXFu8
+remote_port = 27020
+remote_collection = speeches

@@ -1,0 +1,582 @@
+swagger: "2.0"
+
+info:
+  description: "Gruppe_1_1 API for the Practical programming course winter semester 2021 / 2022"
+  version: "v0.0.1"
+  title: "Gruppe_1_1 API"
+  
+host: "localhost:4567"
+
+tags:
+- name: "Speakers"
+- name: "Speeches"
+- name: "Analyses"
+- name: "Further Data"
+
+schemes:
+- "http"
+
+paths:
+  /speakers:
+    get:
+      tags:
+      - "Speakers"
+      summary: "Returns all or certain speakers"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "query"
+        description: "ID of the speaker to return"
+        type: "string"
+      - name: "party"
+        in: "query"
+        description: "Party of the speaker to return"
+        type: "string"
+      - name: "fraction"
+        in: "query"
+        description: "Fraction of the speaker to return"
+        type: "string"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Speakers"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+  
+  /speechesinfos:
+    get:
+      tags:
+      - "Speeches"
+      summary: "Returns infos of all or certain speeches"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "query"
+        description: "ID of the speech to return"
+        type: "string"
+      - name: "speakerID"
+        in: "query"
+        description: "ID of the speaker of the speech to return"
+        type: "string"
+      - name: "party"
+        in: "query"
+        description: "Party of the speech to return"
+        type: "string"
+      - name: "fraction"
+        in: "query"
+        description: "Fraction of the speech to return"
+        type: "string"
+      - name: "minms"
+        in: "query"
+        description: "Party of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "maxms"
+        in: "query"
+        description: "Fraction of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SpeechesInfos"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+  /speechesWtextsANDcomments:
+    get:
+      tags:
+      - "Speeches"
+      summary: "Returns infos of all or certain speeches"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "query"
+        description: "ID of the speech to return"
+        type: "string"
+      - name: "speakerID"
+        in: "query"
+        description: "ID of the speaker of the speech to return"
+        type: "string"
+      - name: "party"
+        in: "query"
+        description: "Party of the speech to return"
+        type: "string"
+      - name: "fraction"
+        in: "query"
+        description: "Fraction of the speech to return"
+        type: "string"
+      - name: "minms"
+        in: "query"
+        description: "Party of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "maxms"
+        in: "query"
+        description: "Fraction of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SpeechesWtextsANDcomments"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+  
+  /tokens:
+    get:
+      tags:
+      - "Analyses"
+      summary: "Returns all tokens sorted by count of all or certain speeches"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "query"
+        description: "ID of the speech to return"
+        type: "string"
+      - name: "speakerID"
+        in: "query"
+        description: "ID of the speaker of the speech to return"
+        type: "string"
+      - name: "party"
+        in: "query"
+        description: "Party of the speech to return"
+        type: "string"
+      - name: "fraction"
+        in: "query"
+        description: "Fraction of the speech to return"
+        type: "string"
+      - name: "minms"
+        in: "query"
+        description: "Party of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "maxms"
+        in: "query"
+        description: "Fraction of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "minocc"
+        in: "query"
+        description: "Minimum Occurence of a Token"
+        type: "integer"
+        format: "int32"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Tokens"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+  /pos:
+    get:
+      tags:
+      - "Analyses"
+      summary: "Returns all pos sorted by count of all or certain speeches"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "query"
+        description: "ID of the speech to return"
+        type: "string"
+      - name: "speakerID"
+        in: "query"
+        description: "ID of the speaker of the speech to return"
+        type: "string"
+      - name: "party"
+        in: "query"
+        description: "Party of the speech to return"
+        type: "string"
+      - name: "fraction"
+        in: "query"
+        description: "Fraction of the speech to return"
+        type: "string"
+      - name: "minms"
+        in: "query"
+        description: "Party of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "maxms"
+        in: "query"
+        description: "Fraction of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "minocc"
+        in: "query"
+        description: "Minimum Occurence of a Pos"
+        type: "integer"
+        format: "int32"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Pos"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+  /sentiments:
+    get:
+      tags:
+      - "Analyses"
+      summary: "Returns all sentiments sorted by count of all or certain speeches"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "query"
+        description: "ID of the speech to return"
+        type: "string"
+      - name: "speakerID"
+        in: "query"
+        description: "ID of the speaker of the speech to return"
+        type: "string"
+      - name: "party"
+        in: "query"
+        description: "Party of the speech to return"
+        type: "string"
+      - name: "fraction"
+        in: "query"
+        description: "Fraction of the speech to return"
+        type: "string"
+      - name: "minms"
+        in: "query"
+        description: "Party of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "maxms"
+        in: "query"
+        description: "Fraction of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "minocc"
+        in: "query"
+        description: "Minimum Occurence of a Sentiment"
+        type: "integer"
+        format: "int32"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Sentiments"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+  /namedEntities:
+    get:
+      tags:
+      - "Analyses"
+      summary: "Returns all named entities sorted by count of all or certain speeches"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_id"
+        in: "query"
+        description: "ID of the speech to return"
+        type: "string"
+      - name: "speakerID"
+        in: "query"
+        description: "ID of the speaker of the speech to return"
+        type: "string"
+      - name: "party"
+        in: "query"
+        description: "Party of the speech to return"
+        type: "string"
+      - name: "fraction"
+        in: "query"
+        description: "Fraction of the speech to return"
+        type: "string"
+      - name: "minms"
+        in: "query"
+        description: "Party of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "maxms"
+        in: "query"
+        description: "Fraction of the speaker of the speech to return"
+        type: "integer"
+        format: "int64"
+      - name: "minocc"
+        in: "query"
+        description: "Minimum Occurence of a Named Entity"
+        type: "integer"
+        format: "int32"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NichtModellierbar"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+          
+  /status:
+    get:
+      tags:
+      - "Further Data"
+      summary: "Returns all progress stats"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NichtModellierbar"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+  /treeview:
+    get:
+      tags:
+      - "Further Data"
+      summary: "Returns the treeview"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/TreeView"
+        "400":
+          description: Failure
+          schema:
+            $ref: "#/definitions/JSONObject"
+          
+          
+  
+definitions:        
+  Speakers:
+    type: "object"
+    properties:
+      result:
+        type: "array"
+        description: "Array full of SpeakerObjects"
+        items:
+          type: "object"
+          properties:
+            _id:
+              type: "string"
+            title:
+              type: "string"
+            firstName:
+              type: "string"
+            nameSuffix:
+              type: "string"
+            lastName:
+              type: "string"
+            placeSuffix:
+              type: "string"
+            fraction:
+              type: "string"
+            party:
+              type: "string"
+            roleLong:
+              type: "string"
+            roleShort:
+              type: "string"
+            state:
+              type: "string"
+            birthday:
+              type: "string"
+            birthplace:
+              type: "string"
+            dateofdeath:
+              type: "string"
+            gender:
+              type: "string"
+            picture:
+              type: "object"
+              properties:
+                Ort:
+                  type: "string"
+                Aufgenommen:
+                  type: "string"
+                Bildnummer:
+                  type: "string"
+                Fotograf/in:
+                  type: "string"
+                Einleitung:
+                  type: "string"
+                AbgebildetePerson:
+                  type: "string"
+                Bildart:
+                  type: "string"
+                FotoURL:
+                  type: "string"
+      message:
+        type: "string"
+
+
+  SpeechesInfos:
+    type: "object"
+    properties:
+      result:
+        type: "array"
+        description: "Array full of stripped SpeechObjects"
+        items:
+          type: "object"
+          properties:
+            _id:
+              type: "string"
+            speakerID:
+              type: "string"
+            sessionNumber:
+              type: "string"
+            sessionDate:
+              type: "object"
+              properties:
+                numberLong:
+                  type: "string"
+            electionPeriod:
+              type: "string"
+            agendaItemId:
+              type: "string"
+      message:
+        type: "string"
+        
+        
+  SpeechesWtextsANDcomments:
+    type: "object"
+    properties:
+      result:
+        type: "array"
+        description: "Array full of stripped SpeechObjects"
+        items:
+          type: "object"
+          properties:
+            _id:
+              type: "string"
+            speechText:
+              type: "string"
+            commentList:
+              type: "array"
+              description: "Array full of comment Strings"
+              items:
+                type: "string"
+      message:
+        type: "string"
+          
+          
+  Tokens:
+    type: "object"
+    properties:
+      result:
+        type: "array"
+        description: "Array full of TokenObjects"
+        items:
+          type: "object"
+          properties:
+            token:
+              type: "string"
+            count:
+              type: "integer"
+              format: "int32"
+      message:
+        type: "string"
+        
+          
+  Pos:
+    type: "object"
+    properties:
+      result:
+        type: "array"
+        description: "Array full of PosObjects"
+        items:
+          type: "object"
+          properties:
+            pos:
+              type: "string"
+            count:
+              type: "integer"
+              format: "int32"
+      message:
+        type: "string"
+   
+        
+  Sentiments:
+    type: "object"
+    properties:
+      result:
+        type: "array"
+        description: "Array full of SentimentObjects"
+        items:
+          type: "object"
+          properties:
+            sentiment:
+              type: "string"
+            count:
+              type: "integer"
+              format: "int32"
+      message:
+        type: "string"
+      
+      
+  TreeView:
+    type: "object"
+    properties:
+      result:
+        type: "array"
+        description: "Array full of ElectionPeriodObjects"
+        items:
+          type: "object"
+          properties:
+            ElectionPeriod:
+              type: "string"
+            SessionNrArray:
+              type: "array"
+              description: "Array full of SessioNrObjects"
+              items:
+                type: "object"
+                properties:
+                  SessionNr:
+                    type: "string"
+                  AgendaItemIDArray:
+                    type: "array"
+                    description: "Array full of AgendaItemIDObjects"
+                    items:
+                      type: "object"
+                      properties:
+                        Top-ID:
+                          type: "string"
+                        SpeechIDArray:
+                          type: "array"
+                          description: "Array full of SpeechIDObjects"
+                          items:
+                            type: "object"
+                            properties:
+                              SpeechID:
+                                type: "string"
+      message:
+        type: "string"
+
+
+  NichtModellierbar:
+    type: "object"
+    properties:
+      Nicht Modellierbar:
+        type: "string"
+ 
+ 
+  JSONObject:
+    type: object
+    properties:
+      empty:
+        type: boolean
